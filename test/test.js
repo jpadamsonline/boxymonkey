@@ -1,5 +1,5 @@
 var request = require('supertest');
-var app = require('../app.js');
+var app = require('../server.js');
 
 describe('GET /', function() {
     it('responds with BoxyMonkey welcome msg', function () {

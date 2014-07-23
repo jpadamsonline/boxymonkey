@@ -1,0 +1,26 @@
+{
+  "name": "boxymonkey",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jpadamsonline/boxymonkey",
+  "authors": [
+    "JP Adams <jpadamsonline@gmail.com>"
+  ],
+  "description": "'An app aimed at helping get more out of themselves'",
+  "main": "app.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.20",
+    "angular-route": "~1.2.20",
+    "animate.css": "~3.2.0",
+    "font-awesome": "~4.1.0",
+    "bootstrap": "~3.2.0"
+  }
+}
