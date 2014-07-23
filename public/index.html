@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <base href="/">
+
+        <title>BoxyMonkey Project</title>
+
+        <!-- CSS -->
+        <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+
+        <!-- JS -->
+        <script src="libs/angular/angular.min.js" type="text/javascript"></script>
+        <script src="libs/angular-route/angular-route.min.js" type="text/javascript"></script>
+
+        <!-- Angular Custom Apps -->
+        <script src="js/controllers/MainCtrl.js" type="text/javascript"></script>
+
+        <script src="js/controllers/NerdCtrl.js" type="text/javascript"></script>
+        <script src="js/services/NerdService.js" type="text/javascript"></script>
+
+        <script src="js/controllers/GeekCtrl.js" type="text/javascript"></script>
+        <script src="js/services/GeekService.js" type="text/javascript"></script>
+
+        <script src="js/appRoutes.js" type="text/javascript"></script>
+        <script src="js/app.js" type="text/javascript"></script>
+    </head>
+
+    <body data-ng-app="boxyMonkeyApp" data-ng-controller="NerdController">
+        <div class="container">
+            <h2>BoxyMonkey Project</h2> 
+
+            <nav>
+                <ul class="nav navbar-nav">
+                    <li><a href="/nerds">Nerds</a></li>
+                    <li><a href="/geeks">Geeks</a></li>
+                </ul>
+            </nav>
+
+            <!-- angular dynamic content -->
+            <div data-ng-view></div>
+        </div>
+    </body>
+
+</html>
