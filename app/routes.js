@@ -1,6 +1,8 @@
 // app/routes.js
 
 
+var Nerd = require('../app/models/nerd');
+
 module.exports = function(app) {
 
     // server routes =======================================
@@ -18,6 +20,27 @@ module.exports = function(app) {
                 res.send(err);
 
             res.json(nerds); // return all nerds in JSON format
+        });
+    });
+
+    app.post('/api/nerd', function(req, res) {
+        var nerd = new Nerd(); // create a new instance of nerd model
+        console.log(req.query);
+        nerd.name = req.body.name // get the nerd name from the request body
+
+        nerd.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({
+                message: 'Nerd created!'
+            });
+        });
+    });
+
+    app.get('/api/hello', function(req, res) {
+        res.json({
+            message: 'hello we are working here'
         });
     });
 
