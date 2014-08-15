@@ -24,9 +24,26 @@ module.exports = function(app) {
     });
 
     app.post('/api/nerd', function(req, res) {
+        /*
+            console.log('posting ... ');
+            console.log('==========================================================');
+        */
+
         var nerd = new Nerd(); // create a new instance of nerd model
-        console.log(req.query);
-        nerd.name = req.body.name // get the nerd name from the request body
+
+        /*
+            for( prop in req ) {
+                if (req.hasOwnProperty(prop)) {
+                    console.log(typeof req[prop], ": ", prop);
+                }
+            }
+            console.log('------------------------------------');
+            //console.log(req);
+            console.log(req.body);
+            console.log(req.body.name);
+        */
+
+        nerd.name = req.body.name; // get the nerd name from the request body
 
         nerd.save(function(err) {
             if (err)
