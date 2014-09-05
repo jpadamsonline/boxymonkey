@@ -6,6 +6,20 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var ghost = require('ghost');
+var path = require('path');
+
+console.log(path.join(__dirname, 'config.js'));
+console.log( path.join(__dirname, './node_modules/ghost/content/data/ghost-dev.db'));
+
+ghost({
+  config: path.join(__dirname, 'config.js')
+});
+/*
+.then(function (app) {
+    app.start();
+});
+*/
 
 // configuration ========================================
 
@@ -15,6 +29,15 @@ var db = require('./config/db');
 var port = process.env.PORT || 5000; // set up oru ports
 mongoose.connect(db.url); // connect to your mongoDB database (uncomment after you set up creds)
 
+app.use(function(req, res, next) {
+    req.socket.on("error", function() {
+        console.log('rq error');
+    });
+    res.socket.on("error", function() {
+        console.log('rs error');
+    });
+    next();
+});
 
 app.use(bodyParser.json({
     extended: true,

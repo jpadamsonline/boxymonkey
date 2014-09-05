@@ -1,3 +1,34 @@
+.header {
+    border-bottom: 2px solid #333;
+}
+    .content {
+        width: 1134px;
+        margin: 0 auto;
+        padding: 18px 0;
+    }
+    .logo {
+        font-family: verdana;
+        font-weight: bold;
+        display: inline-block;
+        font-size: 18px;
+        width: 49%;
+    }
+    .nav {
+        width: 50%;
+        display: inline-block;
+        text-align: right;
+    }
+    .nav ul {
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        text-align: right;
+    }
+    .nav li {
+        display: inline-block;
+        padding: 0 0 0 30px;
+    }
+
 a {
     color: #633;
 }

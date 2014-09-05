@@ -2,6 +2,8 @@
 
 
 var Nerd = require('../app/models/nerd');
+var ghost = require('ghost');
+var httpProxy = require('http-proxy');
 
 module.exports = function(app) {
 
@@ -9,6 +11,55 @@ module.exports = function(app) {
     // handle things like api calls
     // authentication routes
 
+    // proxy to ghost blog
+    /*
+app.get('/blog/{p*}', function() {
+    handler: {
+        proxy: {
+            host: '0.0.0.0',
+            port: '2368'
+        }
+    }
+}); 
+
+ghost({
+    config: path.join(__dirname, 'config.js')
+})
+
+ghost().then(function (app) {
+    app.start();
+}); 
+*/
+/*
+    var proxy = new httpProxy.RoutingProxy();
+    app.get('/blog*', function(req, res, next) {
+        proxy.proxyRequest(req, res, {
+            host: 'http://localhost',
+            port: 2368
+        });
+    });
+    */
+    var proxy = new httpProxy.createProxyServer();
+    app.get('/blog*', function(req, res, next) {
+        proxy.web(req, res, {
+            target: 'http://localhost:2368'
+        });
+    });
+    app.post('/blog*', function(req, res, next) {
+        proxy.web(req, res, {
+            target: 'http://localhost:2368'
+        });
+    });
+    app.delete('/blog*', function(req, res, next) {
+        proxy.web(req, res, {
+            target: 'http://localhost:2368'
+        });
+    });
+    app.put('/blog*', function(req, res, next) {
+        proxy.web(req, res, {
+            target: 'http://localhost:2368'
+        });
+    });
 
     // sample api route
     app.get('/api/nerds', function(req, res) {
